@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>images/refreshIcon.png</file>
+        <file>images/globe_connected.png</file>
+        <file>images/map.png</file>
+        <file>images/antenna2.png</file>
+        <file>images/dialog_error.png</file>
+        <file>images/error.png</file>
+        <file>images/cautionOld.png</file>
+        <file>images/listRefreshIcon.png</file>
+    </qresource>
+</RCC>
