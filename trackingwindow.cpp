@@ -160,20 +160,16 @@ void TrackingWindow::mapAll(){
 
 void TrackingWindow::buildMapNow(){
     timer.restart();
-
     if(!localLat.contains(QRegExp("#")) && !oneLat.contains(QRegExp("#"))){
         mapAll();
         return;
-    }
-    else if(localLat.contains(QRegExp("#")) && !oneLat.contains(QRegExp("#"))){
+    } else if(localLat.contains(QRegExp("#")) && !oneLat.contains(QRegExp("#"))){
         mapOne();
         return;
-    }
-    else if(!localLat.contains(QRegExp("#")) && oneLat.contains(QRegExp("#"))){
+    } else if(!localLat.contains(QRegExp("#")) && oneLat.contains(QRegExp("#"))){
         mapLocal();
         return;
-    }
-    else {
+    } else {
         initMap();
         return;
     }
@@ -241,14 +237,14 @@ void TrackingWindow::enableOneCommands(){
         exitMessage.setStandardButtons(QMessageBox::Cancel | QMessageBox::Ok);
         exitMessage.setDefaultButton(QMessageBox::Ok);
 
-        if("ENABLE\nCommanding" == ui->enableOneButton->text()){
+        if("ENABLE CMD" == ui->enableOneButton->text()){
             exitMessage.setText("<p align='center'><b>ENABLE</b><br>" "Commanding System Now?</p>");
             int ret = exitMessage.exec();
             switch(ret){
             case QMessageBox::Ok:
                 ui->armOneButton->setEnabled(true);
                 ui->armOneButton->setStyleSheet(yellowButtonStyle);
-                ui->enableOneButton->setText("DISABLE\nCommanding");
+                ui->enableOneButton->setText("DISABLE CMD");
                 ui->enableOneButton->setStyleSheet(greenButtonStyle);
                 break;
             }
@@ -265,7 +261,7 @@ void TrackingWindow::enableOneCommands(){
                 ui->armOneButton->setStyleSheet(grayButtonStyle);
                 ui->drogueOneButton->setStyleSheet(grayButtonStyle);
                 ui->mainOneButton->setStyleSheet(grayButtonStyle);
-                ui->enableOneButton->setText("ENABLE\nCommanding");
+                ui->enableOneButton->setText("ENABLE CMD");
                 ui->enableOneButton->setStyleSheet(redButtonStyle);
                 break;
             }
@@ -393,11 +389,13 @@ void TrackingWindow::setLocal(){
         localLat = lastLocal.getLat();
         localLon = lastLocal.getLon();
     }
+
     if(false == lastLocal.getValid()){
         setGpsLocalWarning();
     } else {
         clearGpsLocalWarning();
     }
+
     buildMapDelay();
 }
 
@@ -422,29 +420,32 @@ void TrackingWindow::setOne(){
         pred_oneLat = lastOne.getPlat();
         pred_oneLon = lastOne.getPlon();
     }
+
     if(true == lastOne.getArm()){
         ui->armOneButton->setStyleSheet(ackButtonStyle);
-    }
-    else if(!ui->armOneButton->isEnabled()){
+    } else if(!ui->armOneButton->isEnabled()){
         ui->armOneButton->setStyleSheet(grayButtonStyle);
     }
+
     if(true == lastOne.getDrogue()){
         ui->drogueOneButton->setStyleSheet(ackButtonStyle);
-    }
-    else if(!ui->drogueOneButton->isEnabled()){
+    } else if(!ui->drogueOneButton->isEnabled()){
         ui->drogueOneButton->setStyleSheet(grayButtonStyle);
     }
+
     if(true == lastOne.getFire()){
         ui->mainOneButton->setStyleSheet(ackButtonStyle);
     }
     else if(!ui->mainOneButton->isEnabled()){
         ui->mainOneButton->setStyleSheet(grayButtonStyle);
     }
+
     if(false == lastOne.getValid()){
         setGpsOneWarning();
     } else {
         clearGpsOneWarning();
     }
+
     buildMapDelay();
 }
 
