@@ -51,7 +51,7 @@ private slots:
 private:    
     Ui::TrackingWindow *ui;
     QString mapCenter, startLat, startLon, startMarker, url, zoom, localMarker, localLat, localLon, oneMarker, pred_oneMarker, oneLat, oneLon, pred_oneLat, pred_oneLon;
-    QString  roadMap, satImg, mapSetup, grayButtonStyle, redButtonStyle, greenButtonStyle, yellowButtonStyle, ackButtonStyle;
+    QString roadMap, satImg, mapSetup, grayButtonStyle, redButtonStyle, greenButtonStyle, yellowButtonStyle, ackButtonStyle;
     QextSerialPort *portLocal, *portOne;
     GPSPoint lastLocal, lastOne;
     QTime timer;

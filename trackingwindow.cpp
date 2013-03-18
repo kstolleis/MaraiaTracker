@@ -16,7 +16,7 @@ TrackingWindow::TrackingWindow(QWidget *parent) :
 
     timer.start();
 
-    ui->baudLocalBox->addItems(QStringList()<<"4800"<<"9600");
+    ui->baudLocalBox->addItems(QStringList()<<"4800"<<"9600"<<"115200");
     ui->baudOneBox->addItems(QStringList()<<"9600"<<"115200");
 
     PortSettings setLocal = {BAUD4800, DATA_8, PAR_NONE, STOP_1, FLOW_OFF, 10};
